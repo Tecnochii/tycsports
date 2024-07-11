@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinema Experience</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
+
+        #player-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .overlay-text {
+            font-size: 3rem;
+            text-align: center;
+        }
+
+        .cinema-screen {
+            width: 80%;
+            height: 80%;
+            border: 10px solid #fff;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+
+        .aspect-video {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="player-container">
+        <div class="overlay" onclick="togglePlay()">
+            <div class="overlay-text">Click to Play</div>
+        </div>
+        <iframe class="cinema-screen aspect-video" src="https://streamtp.live/global2.php?stream=tyc_sports" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+    </div>
+
+    <script>
+        function togglePlay() {
+            var overlay = document.querySelector('.overlay');
+            overlay.style.display = 'none';
+
+            var video = document.querySelector('iframe');
+            video.src += "&autoplay=1";
+        }
+    </script>
+</body>
+</html>
